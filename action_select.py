@@ -27,9 +27,9 @@ def action_select(players, skills, monsters):
             try:
                 temp_select(actions_name)
                 temp = create_temp(skills)
-                print("player선택")
+                print("action선택")
                 get_action = input(temp)
-                if 0 < int(get_action) and int(get_action) <= 2:
+                if 0 < int(get_action) and int(get_action) <= int(len(skills)):
                     actions_name[1] = skills[int(get_action)-1]
                     select_erro = 1
             except:
@@ -89,9 +89,15 @@ def action_array_select(players, players_info, skills, monsters, monsters_info):
         select_action = 0
         while select_action == 0:
             action = action_select(dplayers, skills, monsters)
-            players_info[players.index(action[0])].attack(
-                dmonsters_info[monsters.index(action[2])])
-
+            # 공격
+            if action[1] == skills[0]:
+                players_info[players.index(action[0])].attack(
+                    dmonsters_info[monsters.index(action[2])])
+            elif action[1] == skills[1]:
+                players_info[players.index(action[0])].mga1(
+                    dmonsters_info[monsters.index(action[2])])
+            elif action[1] == skills[2]:
+                players_info[players.index(action[0])].mgh1()
             # 행동된 플레이어 삭제제
             del dplayers[dplayers.index(action[0])]
             select_erro = 0

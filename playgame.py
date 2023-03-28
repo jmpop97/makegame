@@ -27,13 +27,17 @@ monsters_info = [monster1, monster2]
 # play
 action_end = 0
 while action_end == 0:
-    monster1.infos()
+    player1.infos()
     input("")
 
     actions = action_array_select(
         players, players_info, skills, monsters, monsters_info)
     a_i = 0
+
     for change_monsters in monsters_info:
         change_monsters.copys(actions[a_i])
         a_i += 1
-1
+
+    # 몬스터 턴
+    monster_actions = monster_action_array(
+        players, players_info, skills, monsters, monsters_info)
