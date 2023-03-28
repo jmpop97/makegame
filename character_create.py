@@ -39,7 +39,7 @@ def create_character(player_n):
                     os.system('cls')
                     print("HP : "+str(player_HP)+", MP : "+str(player_MP)+", power : " +
                           str(player_power)+", mgpower : "+str(player_mgpower)+", 남은stat : "+str(stat))
-                    y_s = input("캐릭터를 생성하겠습니까? 1-Yes 2-No : ")
+                    y_s = input("캐릭터를 확정하시겠습니까? 1-Yes 2-No : ")
                     if y_s == "1":
                         create_character = 1
                         check_stat = 1

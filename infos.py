@@ -34,7 +34,7 @@ class Infos:
 
         if self.MP < 10:
             self.MP = 0
-            print(f"마법이 취소되었습니다. -{MP}MP")
+            print(f"마법이 취소되었습니다. -{self.MP}MP")
         else:
             self.MP -= 10
             damage = int(self.mgpower*1.5)
@@ -45,7 +45,7 @@ class Infos:
     def mgh1(self):
         if self.MP < 10:
             self.MP = 0
-            print(f"마법이 취소되었습니다. -{MP}MP")
+            print(f"마법이 취소되었습니다. -{self.MP}MP")
         else:
             self.MP -= 10
             self.HP += self.mgpower*10
