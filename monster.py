@@ -19,7 +19,7 @@ class MonsterInfo(Infos):
 
 
 def monster_action_array(players, players_info, skills, monsters, monsters_info):
-
+    # 체력높은사람
     for monster in monsters_info:
         if monster.name == "서채연":
             player_HP = 0
@@ -28,7 +28,7 @@ def monster_action_array(players, players_info, skills, monsters, monsters_info)
                     player_HP = player.HP
                     max_HP_p = player
             monster.attack(max_HP_p)
-
+    # mg파워높은사람
         elif monster.name == "노탁근":
             player_mgpower = 0
             for player in players_info:
@@ -36,7 +36,7 @@ def monster_action_array(players, players_info, skills, monsters, monsters_info)
                     player_mgpower = player.mgpower
                     max_mgpower_p = player
             monster.mga1(max_mgpower_p)
-
+    # 전체공격
         elif monster.name == "이정현":
             for player in players_info:
                 monster.attack(player)
