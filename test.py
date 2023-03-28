@@ -23,4 +23,4 @@ skills = ["공격", "마법"]
 dmonsters_info = monster_action_array(
     players, players_info, skills, monsters, monsters_info)
 
-player2.infos()
+player1.infos()

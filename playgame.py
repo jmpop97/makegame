@@ -22,22 +22,49 @@ monsters = ["monster1", "monster2"]
 
 monster1 = MonsterInfo("서채연")
 monster2 = MonsterInfo("이정현")
-players_info = [player1, player2]
-monsters_info = [monster1, monster2]
+
 # play
-action_end = 0
-while action_end == 0:
-    player1.infos()
-    input("")
+try:
+    action_end = 0
+    while action_end == 0:
+        players_info = [player1, player2]
+        monsters_info = [monster1, monster2]
+        # 정보
+        os.system('cls')
+        input("player정보")
+        player1.infos()
+        player2.infos()
 
-    actions = action_array_select(
-        players, players_info, skills, monsters, monsters_info)
-    a_i = 0
+        actions = action_array_select(
+            players, players_info, skills, monsters, monsters_info)
+        a_i = 0
+        full_HP = 0
+        for change_monsters in monsters_info:
+            change_monsters.copys(actions[a_i])
+            full_HP = full_HP + change_monsters.HP
+            a_i += 1
 
-    for change_monsters in monsters_info:
-        change_monsters.copys(actions[a_i])
-        a_i += 1
+        # 정보
+        os.system('cls')
+        input("monster정보")
+        monster1.infos()
+        monster2.infos()
 
-    # 몬스터 턴
-    monster_actions = monster_action_array(
-        players, players_info, skills, monsters, monsters_info)
+        input("")
+        if full_HP == 0:
+            print("게임 승리")
+            raise
+
+        # 몬스터 턴
+
+        monster_actions = monster_action_array(
+            players, players_info, skills, monsters, monsters_info)
+
+        full_HP = 0
+        for change_players in players_info:
+            full_HP = full_HP + change_players.HP
+        if full_HP == 0:
+            print("게임 패배")
+            raise
+except:
+    print("게임끝")

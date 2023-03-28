@@ -19,11 +19,12 @@ class MonsterInfo(Infos):
 
 
 def monster_action_array(players, players_info, skills, monsters, monsters_info):
+
     for monster in monsters_info:
         if monster.name == "서채연":
             player_HP = 0
             for player in players_info:
-                if player_HP < player.HP:
+                if player_HP <= player.HP:
                     player_HP = player.HP
                     max_HP_p = player
             monster.attack(max_HP_p)
