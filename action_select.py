@@ -72,6 +72,7 @@ def action_array_select(players, players_info, skills, monsters, monsters_info):
 
     turn_end = 0
     # 더미 데이터
+    dplayers = players
     while turn_end == 0:
         i = 0
         dmonsters_info = []
@@ -83,7 +84,8 @@ def action_array_select(players, players_info, skills, monsters, monsters_info):
                 [locals()["d"+monsters[i]]]
 
             i += 1
-        dplayers = players
+        dplayers = players[:]
+
         select_action = 0
         while select_action == 0:
             action = action_select(dplayers, skills, monsters)
@@ -93,23 +95,36 @@ def action_array_select(players, players_info, skills, monsters, monsters_info):
             # 행동된 플레이어 삭제제
             del dplayers[dplayers.index(action[0])]
             select_erro = 0
+            print(len(dplayers))
             while select_erro == 0:
                 try:
-                    print(action)
-                    get_action = input("1-다음행동 , 2-초기화 , 3-다음턴 : ")
-                    # 다음행동
-                    if get_action == "1":
-                        select_erro = 1
-                    # 초기화
-                    elif get_action == "2":
-                        select_erro = 1
-                        select_action = 1
-                    # 다음턴
-                    elif get_action == "3":
-                        select_erro = 1
-                        select_action = 1
-                        turn_end = 1
+                    if (len(dplayers) == 0):
+                        print(action)
+                        get_action = input("1-초기화 , 2-다음턴 : ")
+                        if get_action == "1":
+                            select_erro = 1
+                            select_action = 1
+                        # 다음턴
+                        elif get_action == "2":
+                            select_erro = 1
+                            select_action = 1
+                            turn_end = 1
+                    else:
+                        print(action)
+                        get_action = input("1-다음행동 , 2-초기화 , 3-다음턴 : ")
+                        # 다음행동
+                        if get_action == "1":
+                            select_erro = 1
+                        # 초기화
+                        elif get_action == "2":
+                            select_erro = 1
+                            select_action = 1
+                        # 다음턴
+                        elif get_action == "3":
+                            select_erro = 1
+                            select_action = 1
+                            turn_end = 1
 
                 except:
                     pass
-        return dmonsters_info
+    return dmonsters_info

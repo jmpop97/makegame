@@ -18,6 +18,7 @@ monsters_info = [monster1, monster2]
 players = ["player1", "player2"]
 monsters = ["monster1", "monster2"]
 skills = ["공격", "마법"]
-action_array_select(players, players_info, skills, monsters, monsters_info)
-actions = {"player1": ["공격", "monster1"], "player2": ["공격", "monster2"]}
+dmonsters_info = action_array_select(
+    players, players_info, skills, monsters, monsters_info)
+
 monster1.infos()

@@ -19,9 +19,21 @@ player2.infos()
 players = ["player1", "player2"]
 skills = ["공격", "마법"]
 monsters = ["monster1", "monster2"]
+
+monster1 = MonsterInfo("서채연")
+monster2 = MonsterInfo("이정현")
+players_info = [player1, player2]
+monsters_info = [monster1, monster2]
 # play
 action_end = 0
 while action_end == 0:
-    player1.infos()
+    monster1.infos()
     input("")
-    actions = action_array_select(players, skills, monsters)
+
+    actions = action_array_select(
+        players, players_info, skills, monsters, monsters_info)
+    a_i = 0
+    for change_monsters in monsters_info:
+        change_monsters.copys(actions[a_i])
+        a_i += 1
+1
